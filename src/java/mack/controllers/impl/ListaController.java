@@ -16,7 +16,7 @@ import mack.entities.Usuario;
  *
  * @author juliano.lopes
  */
-public class IndexController extends AbstractController {
+public class ListaController extends AbstractController {
 
     public void execute() {
         try {
@@ -26,7 +26,7 @@ public class IndexController extends AbstractController {
             this.setReturnPage("/index.jsp");
             this.getRequest().setAttribute("usuarios", usuarios);
         } catch (Exception ex) {
-            Logger.getLogger(IndexController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

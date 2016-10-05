@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author juliano.lopes
  */
-public abstract class AbstractController {
+public abstract class AbstractController implements Controller {
 
     private HttpServletRequest request;
     protected String returnPage;

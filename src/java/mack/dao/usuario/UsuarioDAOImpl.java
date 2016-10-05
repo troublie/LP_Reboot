@@ -6,7 +6,7 @@
 package mack.dao.usuario;
 
 import mack.entities.Usuario;
-import mack.entities.UsuarioImpl;
+import mack.entities.Usuario;
 import java.sql.*;
 import java.util.*;
 import mack.dao.exception.DAORuntimeException;
@@ -136,7 +136,7 @@ class UsuarioDAOImpl implements UsuarioDAO {
                         "executeUpdate return value: "
                         + rows);
             }
-            result = new UsuarioImpl(usuario_id, nome, sobrenome);
+            result = new Usuario(usuario_id, nome, sobrenome);
         } catch (SQLException ex) {
             log.error(ex);
             throw new DAORuntimeException(ex);
