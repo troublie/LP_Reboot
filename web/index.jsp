@@ -4,6 +4,7 @@
     Author     : juliano.lopes
 --%>
 
+<%@page import="java.util.Collection"%>
 <%@page import="mack.entities.Usuario"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,10 +18,9 @@
     <body>
         <h1>Usuarios!</h1>
         <%
-            List<Usuario> usuarios
-                    = (List<Usuario>) request.getAttribute("usuarios");
+            Collection<Usuario> usuarios = (Collection<Usuario>) request.getAttribute("usuarios");
         %>
-        <%if (usuarios.size() > 0) { %>
+        <%if (!usuarios.isEmpty()) { %>
         <table>
             <% for (Usuario u : usuarios) {%>
             <tr>

@@ -1,10 +1,13 @@
 package mack.controllers.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mack.controllers.AbstractController;
+import mack.dao.usuario.UsuarioDAO;
+import static mack.dao.usuario.UsuarioDAOFactory.getUsuarioDAO;
 import mack.entities.Usuario;
 
 /*
@@ -20,14 +23,19 @@ public class ListaController extends AbstractController {
 
     public void execute() {
         try {
-            List usuarios = new ArrayList<Usuario>();
-            usuarios.add(new Usuario(1, "Mack", "Junior"));
-            usuarios.add(new Usuario(2, "Mack", "Neto"));
+            //List usuarios = new ArrayList<Usuario>();
+            //usuarios.add(new Usuario(1, "Mack", "Junior"));
+            //usuarios.add(new Usuario(2, "Mack", "Neto"));
+            //this.setReturnPage("/index.jsp");
+            //this.getRequest().setAttribute("usuarios", usuarios);
+            UsuarioDAO usuarios = getUsuarioDAO();
+            usuarios.criaUsuario("Juliano", "Lopes");
+            usuarios.criaUsuario("Roger", "Federer");
+            Collection cUsuarios = usuarios.buscaTodosUsuarios();
             this.setReturnPage("/index.jsp");
-            this.getRequest().setAttribute("usuarios", usuarios);
+            this.getRequest().setAttribute("usuarios", cUsuarios);
         } catch (Exception ex) {
             Logger.getLogger(ListaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
-
