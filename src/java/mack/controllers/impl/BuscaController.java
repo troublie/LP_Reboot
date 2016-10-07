@@ -32,7 +32,7 @@ public class BuscaController extends AbstractController {
             }
             else{
                 String nome = this.getRequest().getParameter("nome");
-                cUsuario = usuarios.buscaUsuarioPorNome("nome");
+                cUsuario = usuarios.buscaUsuarioPorNome(nome);
                 this.setReturnPage("/resultadoNome.jsp");
                 this.getRequest().setAttribute("nome", cUsuario);
             }

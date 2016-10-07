@@ -29,8 +29,5 @@
             <%}%>
         </table>
         <%}%>
-        <%else {%>
-        <p>Usuário não encontrado!</p>
-        <%}%>
     </body>
 </html>
