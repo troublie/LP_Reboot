@@ -15,9 +15,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Usuarios!</h1>
+        <h1>Resultado da busca pelo nome</h1>
         <%
-            Collection<Usuario> usuarios = (Collection<Usuario>) request.getAttribute("usuarios");
+            Collection<Usuario> usuarios = (Collection<Usuario>) request.getAttribute("nome");
         %>
         <%if (!usuarios.isEmpty()) { %>
         <table>
