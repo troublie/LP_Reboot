@@ -5,6 +5,7 @@
  */
 package mack.controllers.impl;
 
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mack.controllers.AbstractController;
@@ -19,12 +20,22 @@ import mack.entities.Usuario;
 public class BuscaController extends AbstractController {
 
     public void execute() {
+        Usuario usuario = null;
+        Collection cUsuario = null;
         try {
             UsuarioDAO usuarios = getUsuarioDAO();
+            if(this.getRequest().getParameter("id") != null){
             int id = Integer.parseInt(this.getRequest().getParameter("id"));
-            Usuario usuario = usuarios.buscaUsuarioPorId(id);
+            usuario = usuarios.buscaUsuarioPorId(id);
             this.setReturnPage("/resultado.jsp");
             this.getRequest().setAttribute("usuarioID", usuario);
+            }
+            else{
+                String nome = this.getRequest().getParameter("nome");
+                cUsuario = usuarios.buscaUsuarioPorNome("nome");
+                this.setReturnPage("/resultadoNome.jsp");
+                this.getRequest().setAttribute("nome", cUsuario);
+            }
         } catch (Exception ex) {
             Logger.getLogger(ListaController.class.getName()).log(Level.SEVERE, null, ex);
         }
