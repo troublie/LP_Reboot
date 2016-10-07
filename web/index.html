@@ -12,5 +12,13 @@ and open the template in the editor.
     <body>
         <h1>Exemplo de uso de FrontController</h1>
         <a href="FrontControllerServlet?control=Lista">Lista</a>
+        
+        <h1>Procura pelo ID</h1>
+        <form method="POST" action="FrontControllerServlet?control=Busca">
+            Nome:<br>
+            <input type="text" name="id">
+            <button type="submit" value="Submit">Submit</button>
+        </form>
+        
     </body>
 </html>
