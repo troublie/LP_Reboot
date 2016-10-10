@@ -78,15 +78,15 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
             throws UsuarioNaoEncontradoException {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("UsuarioPU");
         EntityManager em = emf.createEntityManager();
-        EntityTransaction et = em.getTransaction();
         Usuario u = em.find(Usuario.class, id);
         if (u == null) {
             throw new UsuarioNaoEncontradoException("usuario não encontrado");
         }
         try {
+            em.getTransaction().begin();
             em.remove(u);
             em.flush();
-            et.commit();
+            em.getTransaction().commit();
         } catch (final NoResultException ex) {
             log.error(ex);
             throw new DAORuntimeException(ex);
