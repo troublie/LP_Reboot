@@ -17,5 +17,6 @@
         <% Usuario usuario = (Usuario) request.getAttribute("usuario"); %>
         <% if (usuario != null) {%>
         <p> Usuário <%=usuario.getNome()%> <%=usuario.getSobrenome()%> adicionado com sucesso </p>
+        <%}%>
     </body>
 </html>
