@@ -22,7 +22,7 @@ public class RemoveController extends AbstractController {
     public void execute() {
         try {
             UsuarioDAO usuarios = getUsuarioDAO();
-            int id = Integer.parseInt(this.getRequest().getParameter("id"));
+            int id = Integer.parseInt(this.getRequest().getParameter("idRem"));
             usuarios.removeUsuario(id);
             boolean res = true;
             this.setReturnPage("/resultadoRemove.jsp");
