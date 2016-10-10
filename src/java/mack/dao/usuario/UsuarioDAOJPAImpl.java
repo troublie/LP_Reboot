@@ -11,6 +11,7 @@ import java.util.*;
 import static javassist.CtMethod.ConstParameter.string;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
@@ -77,12 +78,15 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
             throws UsuarioNaoEncontradoException {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("UsuarioPU");
         EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
         Usuario u = em.find(Usuario.class, id);
         if (u == null) {
             throw new UsuarioNaoEncontradoException("usuario não encontrado");
         }
         try {
             em.remove(u);
+            em.flush();
+            et.commit();
         } catch (final NoResultException ex) {
             log.error(ex);
             throw new DAORuntimeException(ex);
