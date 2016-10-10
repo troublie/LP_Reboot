@@ -29,8 +29,6 @@ public class ListaController extends AbstractController {
             //this.setReturnPage("/index.jsp");
             //this.getRequest().setAttribute("usuarios", usuarios);
             UsuarioDAO usuarios = getUsuarioDAO();
-            usuarios.criaUsuario("Juliano", "Lopes");
-            usuarios.criaUsuario("Roger", "Federer");
             Collection cUsuarios = usuarios.buscaTodosUsuarios();
             this.setReturnPage("/index.jsp");
             this.getRequest().setAttribute("usuarios", cUsuarios);

@@ -26,7 +26,7 @@ public class RemoveController extends AbstractController {
             usuarios.removeUsuario(id);
             boolean res = true;
             this.setReturnPage("/resultadoRemove.jsp");
-            this.getRequest().setAttribute("res", res);
+            this.getRequest().setAttribute("idRem", res);
         } catch (UsuarioNaoEncontradoException ex) {
             Logger.getLogger(RemoveController.class.getName()).log(Level.SEVERE, null, ex);
         }

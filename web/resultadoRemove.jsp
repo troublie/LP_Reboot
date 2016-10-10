@@ -13,11 +13,11 @@
     </head>
     <body>
         <h1>Resultado da remoção</h1>
-        <% boolean res = (boolean) request.getAttribute("res"); %>
+        <% boolean res = (boolean) request.getAttribute("idRem"); %>
         <% if (res) {%>
         <p> Usuário removido com sucesso! </p>
         <%}%>
-        <%else{%>
+        <%if(!res){%>
         <p> Erro ao remover usuário! </p>
         <%}%>
     </body>
