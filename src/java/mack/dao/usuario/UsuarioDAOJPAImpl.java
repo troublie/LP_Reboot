@@ -66,6 +66,9 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
             log.error(ex);
             throw new DAORuntimeException(ex);
         }
+        em.clear();
+        em.close();
+        emf.close();
         return result;
     }
 
