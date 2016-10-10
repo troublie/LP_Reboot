@@ -75,6 +75,22 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
     @Override
     public void removeUsuario(final int id)
             throws UsuarioNaoEncontradoException {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("UsuarioPU");
+        EntityManager em = emf.createEntityManager();
+        Usuario u = em.find(Usuario.class, id);
+        if (u == null) {
+            throw new UsuarioNaoEncontradoException("usuario não encontrado");
+        }
+        try {
+            em.remove(u);
+        } catch (final NoResultException ex) {
+            log.error(ex);
+            throw new DAORuntimeException(ex);
+        } finally {
+            em.clear();
+            em.close();
+            emf.close();
+        }
     }
 
     @Override
