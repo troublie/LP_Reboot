@@ -24,13 +24,12 @@ public class BuscaController extends AbstractController {
         Collection cUsuario = null;
         try {
             UsuarioDAO usuarios = getUsuarioDAO();
-            if(this.getRequest().getParameter("id") != null){
-            int id = Integer.parseInt(this.getRequest().getParameter("id"));
-            usuario = usuarios.buscaUsuarioPorId(id);
-            this.setReturnPage("/resultado.jsp");
-            this.getRequest().setAttribute("usuarioID", usuario);
-            }
-            else{
+            if (this.getRequest().getParameter("id") != null) {
+                int id = Integer.parseInt(this.getRequest().getParameter("id"));
+                usuario = usuarios.buscaUsuarioPorId(id);
+                this.setReturnPage("/resultado.jsp");
+                this.getRequest().setAttribute("usuarioID", usuario);
+            } else {
                 String nome = this.getRequest().getParameter("nome");
                 cUsuario = usuarios.buscaUsuarioPorNome(nome);
                 this.setReturnPage("/resultadoNome.jsp");

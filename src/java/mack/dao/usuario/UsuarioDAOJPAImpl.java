@@ -110,7 +110,7 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
         em.persist(usuario);
         em.flush();
         em.getTransaction().commit();
-        
+
         return usuario;
     }
 
