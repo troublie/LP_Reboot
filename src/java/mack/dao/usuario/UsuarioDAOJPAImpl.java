@@ -101,7 +101,7 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
     public Usuario criaUsuario(
             final String nome,
             final String sobrenome) {
-        Usuario usuario = null;
+        Usuario usuario = new Usuario();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("UsuarioPU");
         EntityManager em = emf.createEntityManager();
         usuario.setNome(nome);

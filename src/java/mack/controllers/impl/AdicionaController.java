@@ -17,11 +17,12 @@ import mack.entities.Usuario;
 public class AdicionaController extends AbstractController {
 
     public void execute() {
-
+        
+        Usuario novoUsuario = null;
         UsuarioDAO usuario = getUsuarioDAO();
         String nome = this.getRequest().getParameter("nome");
         String sobrenome = this.getRequest().getParameter("sobrenome");
-        Usuario novoUsuario = usuario.criaUsuario(nome, sobrenome);
+        novoUsuario = usuario.criaUsuario(nome, sobrenome);
         this.setReturnPage("/resultadoAdiciona.jsp");
         this.getRequest().setAttribute("usuario", novoUsuario);
     }
