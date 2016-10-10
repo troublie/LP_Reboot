@@ -28,7 +28,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuarioGenerator")
     private int id;
     
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false, unique = true)
     private String nome;
     @Column(name = "sobrenome")
     private String sobrenome;

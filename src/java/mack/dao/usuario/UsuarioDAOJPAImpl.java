@@ -5,12 +5,21 @@
  */
 package mack.dao.usuario;
 
+import com.sun.istack.internal.NotNull;
 import mack.entities.Usuario;
 import java.util.*;
+import static javassist.CtMethod.ConstParameter.string;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import mack.dao.exception.DAORuntimeException;
+import mack.entities.Usuario_;
 import org.apache.commons.logging.*;
 
 /**
@@ -41,11 +50,28 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
     }
 
     @Override
-    public Collection buscaUsuarioPorNome(final String nome) {
+    //public Collection buscaUsuarioPorNome(final String nome) {
+    //    Collection result = null;
+    //     EntityManagerFactory emf = Persistence.createEntityManagerFactory("UsuarioPU");
+    //     EntityManager em = emf.createEntityManager();
+    //     result = em.
+    //    return result;
+    public Collection buscaUsuarioPorNome(@NotNull final String nome) {
         Collection result = null;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("UsuarioPU");
         EntityManager em = emf.createEntityManager();
-        result = em.
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<Usuario> criteria = builder.createQuery(Usuario.class);
+        Root<Usuario> from = criteria.from(Usuario.class);
+        criteria.select(from);
+        criteria.where(builder.equal(from.get(Usuario_.nome), nome));
+        TypedQuery<Usuario> typed = em.createQuery(criteria);
+        try {
+            result = typed.getResultList();
+        } catch (final NoResultException ex) {
+            log.error(ex);
+            throw new DAORuntimeException(ex);
+        }
         return result;
     }
 
