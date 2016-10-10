@@ -16,7 +16,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Usuarios!</h1>
+        <h1>Usuarios cadastrados:</h1>
         <%
             Collection<Usuario> usuarios = (Collection<Usuario>) request.getAttribute("usuarios");
         %>
@@ -24,6 +24,7 @@
         <table>
             <% for (Usuario u : usuarios) {%>
             <tr>
+                <td><%=u.getId()%></td>
                 <td><%=u.getNome()%></td>
                 <td><%=u.getSobrenome()%></td>
             </tr>
