@@ -19,7 +19,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import mack.dao.exception.DAORuntimeException;
-import mack.entities.Usuario_;
+
 import org.apache.commons.logging.*;
 
 /**
@@ -64,7 +64,7 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
         CriteriaQuery<Usuario> criteria = builder.createQuery(Usuario.class);
         Root<Usuario> from = criteria.from(Usuario.class);
         criteria.select(from);
-        criteria.where(builder.equal(from.get(Usuario_.nome), nome));
+        criteria.where(builder.equal(from.get("nome"), nome));
         TypedQuery<Usuario> typed = em.createQuery(criteria);
         try {
             result = typed.getResultList();
