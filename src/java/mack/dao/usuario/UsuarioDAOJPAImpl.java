@@ -50,12 +50,6 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
     }
 
     @Override
-    //public Collection buscaUsuarioPorNome(final String nome) {
-    //    Collection result = null;
-    //     EntityManagerFactory emf = Persistence.createEntityManagerFactory("UsuarioPU");
-    //     EntityManager em = emf.createEntityManager();
-    //     result = em.
-    //    return result;
     public Collection buscaUsuarioPorNome(@NotNull final String nome) {
         Collection result = null;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("UsuarioPU");
