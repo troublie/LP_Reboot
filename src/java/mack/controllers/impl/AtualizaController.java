@@ -5,9 +5,12 @@
  */
 package mack.controllers.impl;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mack.controllers.AbstractController;
 import mack.dao.usuario.UsuarioDAO;
 import static mack.dao.usuario.UsuarioDAOFactory.getUsuarioDAO;
+import mack.dao.usuario.UsuarioNaoEncontradoException;
 
 /**
  *
@@ -20,6 +23,13 @@ public class AtualizaController extends AbstractController {
         int id = Integer.parseInt(this.getRequest().getParameter("idAtualiza"));
         String nome = this.getRequest().getParameter("nomeAtualiza");
         String sobrenome = this.getRequest().getParameter("sobrenomeAtualiza");
-        
+        try {
+            usuario.updateUsuario(id, nome, sobrenome);
+            boolean res = true;
+            this.setReturnPage("/resultadoAtualiza.jsp");
+            this.getRequest().setAttribute("res", res);
+        } catch (UsuarioNaoEncontradoException ex) {
+            Logger.getLogger(AtualizaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
