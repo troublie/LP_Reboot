@@ -5,7 +5,6 @@
  */
 package mack.dao.usuario;
 
-import com.sun.istack.internal.NotNull;
 import mack.entities.Usuario;
 import java.util.*;
 import static javassist.CtMethod.ConstParameter.string;
@@ -20,7 +19,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import mack.dao.exception.DAORuntimeException;
-
 import org.apache.commons.logging.*;
 
 /**
@@ -51,7 +49,7 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
     }
 
     @Override
-    public Collection buscaUsuarioPorNome(@NotNull final String nome) {
+    public Collection buscaUsuarioPorNome(final String nome) {
         Collection result = null;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("UsuarioPU");
         EntityManager em = emf.createEntityManager();
