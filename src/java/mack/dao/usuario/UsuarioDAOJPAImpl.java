@@ -7,7 +7,6 @@ package mack.dao.usuario;
 
 import mack.entities.Usuario;
 import java.util.*;
-import static javassist.CtMethod.ConstParameter.string;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
